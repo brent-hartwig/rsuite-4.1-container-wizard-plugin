@@ -1,0 +1,30 @@
+<rsuite-plugin id="@pluginId@" version="@pluginVersion@ at @timeStamp@">
+
+	<extensionProvider id="rsuite.WebService">
+	
+		<staticWebService path="/WebContent" root="/@pluginId@" />
+
+        <remoteApiDefinition id="@pluginId@-ws-invoke-wizard"
+            handler="com.rsicms.rsuite.containerWizard.webService.InvokeContainerWizardWebService"
+            label="Container Wizard" />
+            
+        <remoteApiDefinition id="@pluginId@-ws-get-section-type-info"
+            handler="com.rsicms.rsuite.containerWizard.webService.GetSectionTypeInfoWebService"
+            label="Get Section Type Information" />
+            
+        <remoteApiDefinition id="@pluginId@-ws-get-template-info"
+            handler="com.rsicms.rsuite.containerWizard.webService.GetTemplateInfoWebService"
+            label="Get Template Information" />
+
+	</extensionProvider>
+	
+    <extensionProvider id="rsuite.UI">
+
+		<scriptInclude src="@pluginId@/ContainerWiz.js" />
+		<scriptInclude src="@pluginId@/ContainerWiz/SectionType.js" />
+		<scriptInclude src="@pluginId@/ContainerWiz/XmlMoConfView.js" />
+		<styleInclude src="@pluginId@/ContainerWiz/XmlMoConfView.less" />
+
+    </extensionProvider>
+
+</rsuite-plugin>

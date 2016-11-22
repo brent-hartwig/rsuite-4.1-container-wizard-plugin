@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container-wizard-conf 
+    xmlns="http://www.rsicms.com/rsuite/ns/conf/container-wizard" 
+    xmlns:r="http://www.rsuitecms.com/rsuite/ns/metadata" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.rsicms.com/rsuite/ns/conf/container-wizard containerWizardConf.xsd"
+    name="Sample Container Wizard Configuration">
+    
+    <pages>
+        
+        <page form-id="acme-form-create-product-page-1" sub-pages="0"/>
+        <page action-id="rsuite-container-wizard-plugin:wizardPage" sub-pages="1"/>
+        <page form-id="acme-form-create-product-page-3" sub-pages="0"/>
+        
+    </pages>
+    
+    <primary-container type="publication" acl-id="non-support-containers" default-acl-id="mo">
+        
+        <metadata-conf>
+            <name-value-pair name="Hello" value="World"/>
+            <name-value-pair name="Status" value="New"/>
+        </metadata-conf>
+
+        <xml-mo-conf display-name="Cover Page" local-name="cover_page" template-lmd-value="DitaCoverPage" required="1" multiple="0"/>
+        <xml-mo-conf display-name="Introduction" local-name="intro" template-lmd-value="DitaIntroduction" required="1" multiple="0"/>
+        <xml-mo-conf display-name="Background" local-name="background" template-lmd-value="DitaBackground" required="1" multiple="0"/>
+        <xml-mo-conf display-name="Discovery" local-name="discovery" template-lmd-value="DitaDiscovery" required="1" multiple="1"/>
+        <xml-mo-conf display-name="Conclusions" local-name="conclusions" template-lmd-value="DitaConclusions" required="0" multiple="0"/>
+        <xml-mo-conf display-name="Supplementary" local-name="supplementary" template-lmd-value="DitaSupplementary" required="0" multiple="1"/>
+        
+        <container-conf type="support" display-name="Supporting Documentation" acl-id="support-container"/>
+        <container-conf type="folder" display-name="Images" acl-id="non-support-containers"/>
+        
+    </primary-container>
+    
+    <acls>
+        <acl id="non-support-containers">
+            <ace project-role="SMEs" content-permissions="list, view, edit"/>
+            <ace project-role="Reviewers" content-permissions="list, view"/>
+            <ace project-role="Managers" content-permissions="list, view, edit, delete"/>
+        </acl>
+        <acl id="support-container">
+            <ace project-role="SMEs" content-permissions="list, view, edit"/>
+            <ace project-role="Reviewers" content-permissions="list, view, edit"/>
+            <ace project-role="Managers" content-permissions="list, view, edit, delete"/>
+        </acl>
+        <acl id="mo">
+            <ace project-role="SMEs" content-permissions="list, view, edit, delete"/>
+            <ace project-role="Reviewers" content-permissions="list, view, edit"/>
+            <ace project-role="Managers" content-permissions="list, view, edit, delete"/>
+        </acl>
+    </acls>
+    
+</container-wizard-conf>
